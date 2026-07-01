@@ -7,7 +7,16 @@ class Solution:
         if nums[i] + nums[j] == target:
           return [i, j]
 
+  def twoSumFast(self, nums: List[int], target: int) -> List[int]:
+    seen = {}
+    for i, num in enumerate(nums):
+      complement = target - num
+      if complement in seen:
+        return [seen[complement], i]
+      seen[num] = i
+
 
 if __name__ == "__main__":
   sol = Solution()
   print(sol.twoSum([2, 7, 11, 15], 9))
+  print(sol.twoSumFast([2, 7, 11, 15], 9))
